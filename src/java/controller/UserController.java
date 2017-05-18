@@ -107,6 +107,7 @@ public class UserController implements Serializable {
                 }
         }
         setSelected(null);
+        SessionUtil.registerUser(selected);
         return null;
     }
 
