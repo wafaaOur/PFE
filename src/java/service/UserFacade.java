@@ -179,13 +179,13 @@ public class UserFacade extends AbstractFacade<User> {
         }
        
     }
-    public User findConnected(User user){
-         int res = seConnecter(user);
-         if(res>1){
-             return user;
-         }
-         return null;
-    }
+//    public User findConnected(User user){
+//         int res = seConnecter(user);
+//         if(res>1){
+//             return user;
+//         }
+//         return null;
+//    }
 
 //     public int creationUser(User userCreator,User userNew,Division division,Service service){
 //         System.out.println("userCreator.getRole()--->"+userCreator.getRole());

@@ -209,9 +209,9 @@ public class ReclamationItemController implements Serializable {
 
     }
 
-    public void findConnected() {
-        userFacade.findConnected(selectedUser);
-        
-    }
+//    public void findConnected() {
+//        userFacade.findConnected(selectedUser);
+//        
+//    }
 
 }
