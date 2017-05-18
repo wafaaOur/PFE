@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReclamationItemViewDlg" widgetVar="ReclamationItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewReclamationItemTitle}">
+            <h:form id="ReclamationItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" >
+                        <h:outputText value="#{bundle.ViewReclamationItemLabel_user}"/>
+                        <h:outputText value="#{reclamationItemController.selected.user}" title="#{bundle.ViewReclamationItemTitle_user}"/>
+                        <h:outputText value="#{bundle.ViewReclamationItemLabel_priority}"/>
+                        <h:outputText value="#{reclamationItemController.selected.priority}" title="#{bundle.ViewReclamationItemTitle_priority}"/>
+                        <h:outputText value="#{bundle.ViewReclamationItemLabel_id}"/>
+                        <h:outputText value="#{reclamationItemController.selected.id}" title="#{bundle.ViewReclamationItemTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewReclamationItemLabel_description}"/>
+                        <h:outputText value="#{reclamationItemController.selected.description}" title="#{bundle.ViewReclamationItemTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewReclamationItemLabel_produit}"/>
+                        <h:outputText value="#{reclamationItemController.selected.produit}" title="#{bundle.ViewReclamationItemTitle_produit}"/>
+                        <h:outputText value="#{bundle.ViewReclamationItemLabel_reclamation}"/>
+                        <h:outputText value="#{reclamationItemController.selected.reclamation}" title="#{bundle.ViewReclamationItemTitle_reclamation}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ReclamationItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TechnicienEditDlg" widgetVar="TechnicienEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTechnicienTitle}">
+            <h:form id="TechnicienEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{technicienController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTechnicienLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{technicienController.selected.id}" title="#{bundle.EditTechnicienTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditTechnicienLabel_societe}" for="societe" />
+                        <p:selectOneMenu id="societe" value="#{technicienController.selected.societe}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{societeController.itemsAvailableSelectOne}"
+                                           var="societeItem"
+                                           itemValue="#{societeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTechnicienLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{technicienController.selected.prenom}" title="#{bundle.EditTechnicienTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditTechnicienLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{technicienController.selected.nom}" title="#{bundle.EditTechnicienTitle_nom}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{technicienController.update}" value="#{bundle.Save}" update="display,:TechnicienListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TechnicienEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TechnicienEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

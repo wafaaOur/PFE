@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReclamationCreateDlg" widgetVar="ReclamationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReclamationTitle}">
+            <h:form id="ReclamationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reclamationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateReclamationLabel_dateR}" for="dateR" />
+                        <p:calendar id="dateR" pattern="MM/dd/yyyy" value="#{reclamationController.selected.dateR}" title="#{bundle.EditReclamationTitle_dateR}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateReclamationLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{reclamationController.selected.id}" title="#{bundle.CreateReclamationTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateReclamationLabel_declarator}" for="declarator" />
+                        <p:selectOneMenu id="declarator" value="#{reclamationController.selected.declarator}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="declaratorItem"
+                                           itemValue="#{declaratorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateReclamationLabel_traitor}" for="traitor" />
+                        <p:selectOneMenu id="traitor" value="#{reclamationController.selected.traitor}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="traitorItem"
+                                           itemValue="#{traitorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateReclamationLabel_technicien}" for="technicien" />
+                        <p:selectOneMenu id="technicien" value="#{reclamationController.selected.technicien}" >
+                            <f:selectItems value="#{technicienController.itemsAvailableSelectOne}"
+                                           var="technicienItem"
+                                           itemValue="#{technicienItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reclamationController.create}" value="#{bundle.Save}" update="display,:ReclamationListForm:datalist,:growl" oncomplete="handleSubmit(args,'ReclamationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReclamationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
